@@ -2436,5 +2436,19 @@
     ],
     "difficulty": "advanced",
     "projectPath": "./public/Complaint_Management_System/index.html"
+  },
+  {
+    "projectNo": 196,
+    "projectName": "Movie Search App",
+    "projectType": "Web Application",
+    "projectDesc": "A responsive movie search application powered by the OMDb API that allows users to search movies and view detailed information including posters, ratings, genres, cast, runtime, and plot.",
+    "techStack": [
+      "html",
+      "css",
+      "javascript",
+      "api"
+    ],
+    "difficulty": "intermediate",
+    "projectPath": "./public/movie-search-app/index.html"
   }
 ]
