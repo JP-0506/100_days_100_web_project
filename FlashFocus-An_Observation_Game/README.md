@@ -57,3 +57,10 @@ FlashFocus-An Observation Game/
 ├── package.json              # Active system node dependency tracking scripts
 ├── tsconfig.json             # TypeScript root compilation preferences
 └── vite.config.ts            # Vite compiler build settings
+
+```
+
+## Working
+
+https://github.com/user-attachments/assets/df1b88de-7129-4f56-92a0-d02e1b59d609
+
