@@ -1,1 +1,2 @@
+# FlashFocus - An Observation Game
 
