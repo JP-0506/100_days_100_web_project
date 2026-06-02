@@ -2,7 +2,6 @@
 // Dark mode state
 let isDarkMode = localStorage.getItem("clockDarkMode") === "true";
 if (isDarkMode) document.body.classList.add("dark-mode");
-let activeTheme = localStorage.getItem("clockTheme") || "classic";
 let primaryTimezone = localStorage.getItem("primaryTimezone") || "local";
 let alarms = JSON.parse(localStorage.getItem("clock_alarms")) || [];
 let worldClocks = JSON.parse(localStorage.getItem("clock_worldClocks")) || [];
