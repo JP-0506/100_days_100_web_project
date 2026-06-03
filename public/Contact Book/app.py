@@ -2,6 +2,7 @@
  flask import Flask, render_template, redirect, url_for, request, flash, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 import re
 import difflib
 
@@ -23,6 +24,7 @@ class Contact(db.Model):
     email = db.Column(db.String(150), nullable=False)
     phone = db.Column(db.String(50), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 
 # Helper functions for duplicate detection
