@@ -146,6 +146,10 @@ function updateMetrics() {
   // Update progress UI (matches HTML)
   if (progressFill) progressFill.style.width = `${pct}%`;
   if (progressText) progressText.innerText = `${done} / ${total} done`;
+
+  // Show ‘Clear Done’ button only when at least one task is completed
+  const clearDoneBtn = document.getElementById('cleardone');
+  if (clearDoneBtn) clearDoneBtn.hidden = done === 0;
 }
 
 // 4. Tab Navigation System
@@ -328,6 +332,19 @@ const savePdfBtn = document.getElementById('savepdf');
 if (savePdfBtn) {
   savePdfBtn.addEventListener('click', () => saveAsPDF());
 }
+
+// Wire up Clear Done button click listener
+const clearDoneBtn = document.getElementById('cleardone');
+if (clearDoneBtn) {
+  clearDoneBtn.addEventListener('click', clearDone);
+}
+
+// Wire up filter bar buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterTasks(btn, btn.dataset.filter);
+  });
+});
 
 // --- Page Initialisation ---
 // Set Home tab as active and apply default/saved theme on load
