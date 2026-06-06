@@ -51,6 +51,7 @@
   margin: 0; padding: 0;
   box-sizing: border-box;
 }
+}
 
 /* ── Background Animations ── */
 @keyframes orbFloat1 {
@@ -84,7 +85,7 @@
 
 /* ── Body ── */
 body {
-  font-family: sans-serif,Inter, system-ui;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;;
   font-weight: 400;
   background: var(--bg);
   color: var(--text);
@@ -331,7 +332,7 @@ body::after {
 }
 
 .activity-name {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.35rem;
   font-weight: 800;
   color: var(--text);
