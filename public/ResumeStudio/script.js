@@ -43,6 +43,19 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentTemplate = "modern";
 
     // ===============================
+    // SECURITY HELPER
+    // ===============================
+
+    function escapeHTML(text) {
+
+        const div = document.createElement("div");
+
+        div.textContent = text;
+
+        return div.innerHTML;
+    }
+
+    // ===============================
     // HELPERS
     // ===============================
 
@@ -61,7 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         lines.forEach(line => {
 
-            const cleanLine = line.replace(/^-/, "").trim();
+            const cleanLine = escapeHTML(
+                line.replace(/^-/, "").trim()
+            );
 
             if (cleanLine !== "") {
                 html += `<li>${cleanLine}</li>`;
@@ -87,7 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
         let html = `<div class="skills-grid">`;
 
         skills.forEach(skill => {
-            html += `<span class="skill-tag">${skill}</span>`;
+
+            html += `
+                <span class="skill-tag">
+                    ${escapeHTML(skill)}
+                </span>
+            `;
         });
 
         html += `</div>`;
@@ -151,19 +171,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
         applyTemplateClass();
 
-        const name = nameInput.value || "John Doe";
-        const title = titleInput.value || "Frontend Developer";
-        const email = emailInput.value || "john@example.com";
-        const phone = phoneInput.value || "+91 9876543210";
-        const location = locationInput.value || "Mumbai, India";
+        const name = escapeHTML(
+            nameInput.value || "John Doe"
+        );
 
-        const education = educationInput.value || "Your education details";
-        const linkedin = linkedinInput.value || "";
-        const github = githubInput.value || "";
+        const title = escapeHTML(
+            titleInput.value || "Frontend Developer"
+        );
 
-        const summary =
+        const email = escapeHTML(
+            emailInput.value || "john@example.com"
+        );
+
+        const phone = escapeHTML(
+            phoneInput.value || "+91 9876543210"
+        );
+
+        const location = escapeHTML(
+            locationInput.value || "Mumbai, India"
+        );
+
+        const education = escapeHTML(
+            educationInput.value || "Your education details"
+        );
+
+        const linkedin = escapeHTML(
+            linkedinInput.value || ""
+        );
+
+        const github = escapeHTML(
+            githubInput.value || ""
+        );
+
+        const summary = escapeHTML(
             summaryInput.value ||
-            "Professional summary will appear here.";
+            "Professional summary will appear here."
+        );
 
         // ===============================
         // RESUME HTML
@@ -391,21 +434,16 @@ document.addEventListener("DOMContentLoaded", () => {
             const pageWidth =
                 pdf.internal.pageSize.getWidth();
 
-            const pageHeight =
-                pdf.internal.pageSize.getHeight();
-
             const imgWidth = pageWidth;
 
             const imgHeight =
                 (canvas.height * imgWidth) / canvas.width;
 
-            let position = 0;
-
             pdf.addImage(
                 imgData,
                 "PNG",
                 0,
-                position,
+                0,
                 imgWidth,
                 imgHeight
             );
