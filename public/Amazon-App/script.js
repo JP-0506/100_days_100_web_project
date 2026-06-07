@@ -834,7 +834,7 @@ function safeImage(src) {
     try {
         const u = new URL(s, window.location.href);
         const host = u.hostname.toLowerCase();
-        if (host.includes('drive.google.com')) {
+        if (host === 'drive.google.com') {
             // Case 1: "open?id=FILE_ID"
             const idFromParam = u.searchParams.get('id');
             if (idFromParam) {
@@ -891,11 +891,16 @@ function formatSheetProduct(p, index = 0) {
     };
 
     let imageUrl = get('Image URL', 'Product Image', 'imageUrl', 'image', 'thumbnail') || '';
-    if (imageUrl.includes("drive.google.com")) {
-        const idMatch = imageUrl.match(/[?&]id=([^&]+)/) || imageUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
-        if (idMatch) {
-            imageUrl = `https://lh3.googleusercontent.com/d/${idMatch[1]}=w1000`;
+    try {
+        const u = new URL(imageUrl, window.location.href);
+        if (u.hostname.toLowerCase() === 'drive.google.com') {
+            const idMatch = imageUrl.match(/[?&]id=([^&]+)/) || imageUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
+            if (idMatch) {
+                imageUrl = `https://lh3.googleusercontent.com/d/${idMatch[1]}=w1000`;
+            }
         }
+    } catch (e) {
+        // Ignore parsing errors
     }
 
     const title = get('Product Name', 'productName', 'title', 'name') || 'No Title';
