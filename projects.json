@@ -2705,6 +2705,7 @@
     "difficulty": "advanced",
     "projectPath": "./public/Mood_Based_Music_Recommender/"
   },
+
 {
   "projectNo": 216,
   "projectName": "Runway Calculator",
@@ -2717,5 +2718,37 @@
   ],
   "difficulty": "intermediate",
   "projectPath": "./public/Runway-Calculator/index.html"
-}
+},
+
+  {
+    "projectNo": 217,
+    "projectName": "Gemini Clone",
+    "projectType": "AI",
+    "projectDesc": "A modern clone of the Google Gemini AI chatbot interface, integrated with Google's GenAI API for generating dynamic responses.",
+    "techStack": [
+      "react",
+      "javascript",
+      "html",
+      "css",
+      "api",
+      "vite"
+    ],
+    "difficulty": "advanced",
+    "projectPath": "./public/Gemini/index.html"
+  },
+  {
+    "projectNo": 218,
+    "projectName": "SkillBridge Career Roadmap Explorer",
+    "projectType": "Tool",
+    "projectDesc": "A Next.js career guidance platform that helps students explore technology career paths, required skills, structured learning roadmaps, recommended projects, and curated learning resources.",
+    "techStack": [
+      "nextjs",
+      "react",
+      "typescript",
+      "tailwindcss"
+    ],
+    "difficulty": "advanced",
+    "projectPath": "https://github.com/dhairyagothi/100_days_100_web_project/tree/Main/public/SkillBridge"
+  }
+
 ]
