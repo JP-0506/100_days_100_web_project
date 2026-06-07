@@ -1336,26 +1336,66 @@ function updateLetterPreview() {
   const friend = state.friends.find(f => f.id === friendId);
 
   if (!book || !friend) {
-    DOM.recommendationCardPreview.innerHTML = '<p class="text-center italic-font">Drafting details...</p>';
+    DOM.recommendationCardPreview.textContent = 'Drafting details...';
     return;
   }
 
   const colors = (book.coverColors || "#7c3a2b,#4a1d13").split(',');
 
-  DOM.recommendationCardPreview.innerHTML = `
-    <div class="preview-letter-box">
-      <div class="preview-stamp">📖</div>
-      <div class="preview-letter-header">Dearest ${friend.name.split(' ')[0]},</div>
-      <div class="preview-letter-body">"${msg || '...'}"</div>
-      <div class="preview-letter-book">
-        <div class="preview-book-cover" style="background: linear-gradient(135deg, ${colors[0]}, ${colors[1]}); border-left: 3px solid rgba(0,0,0,0.3);"></div>
-        <div class="preview-book-details">
-          <h4>${book.title}</h4>
-          <p>by ${book.author}</p>
-        </div>
-      </div>
-    </div>
-  `;
+  // Clear existing preview safely
+  DOM.recommendationCardPreview.replaceChildren();
+
+  // Main box
+  const previewBox = document.createElement('div');
+  previewBox.className = 'preview-letter-box';
+
+  // Stamp
+  const stamp = document.createElement('div');
+  stamp.className = 'preview-stamp';
+  stamp.textContent = '📖';
+
+  // Header
+  const header = document.createElement('div');
+  header.className = 'preview-letter-header';
+  header.textContent = `Dearest ${friend.name.split(' ')[0]},`;
+
+  // Body
+  const body = document.createElement('div');
+  body.className = 'preview-letter-body';
+  body.textContent = `"${msg || '...'}"`;
+
+  // Book section
+  const bookSection = document.createElement('div');
+  bookSection.className = 'preview-letter-book';
+
+  // Cover
+  const cover = document.createElement('div');
+  cover.className = 'preview-book-cover';
+  cover.style.background = `linear-gradient(135deg, ${colors[0]}, ${colors[1]})`;
+  cover.style.borderLeft = '3px solid rgba(0,0,0,0.3)';
+
+  // Details
+  const details = document.createElement('div');
+  details.className = 'preview-book-details';
+
+  const title = document.createElement('h4');
+  title.textContent = book.title;
+
+  const author = document.createElement('p');
+  author.textContent = `by ${book.author}`;
+
+  details.appendChild(title);
+  details.appendChild(author);
+
+  bookSection.appendChild(cover);
+  bookSection.appendChild(details);
+
+  previewBox.appendChild(stamp);
+  previewBox.appendChild(header);
+  previewBox.appendChild(body);
+  previewBox.appendChild(bookSection);
+
+  DOM.recommendationCardPreview.appendChild(previewBox);
 }
 
 // Submit recommendation letter
@@ -1447,9 +1487,10 @@ function closeModal(modalEl) {
 function showToast(message) {
   const toast = document.createElement('div');
   toast.className = 'toast';
-  
-  // Decide icon based on contents
+
+  // Decide icon
   let icon = '✨';
+
   if (message.includes('🎯')) icon = '🎯';
   if (message.includes('📚')) icon = '📚';
   if (message.includes('✏️')) icon = '✏️';
@@ -1458,22 +1499,31 @@ function showToast(message) {
   if (message.includes('💬')) icon = '💬';
   if (message.includes('⚠️')) icon = '⚠️';
 
-  toast.innerHTML = `
-    <span class="toast-icon">${icon}</span>
-    <span class="toast-message">${message.replace(/[🎯📚✏️🗑️💌💬⚠️]/g, '').trim()}</span>
-  `;
+  // Clear safely
+  toast.replaceChildren();
+
+  const iconSpan = document.createElement('span');
+  iconSpan.className = 'toast-icon';
+  iconSpan.textContent = icon;
+
+  const messageSpan = document.createElement('span');
+  messageSpan.className = 'toast-message';
+  messageSpan.textContent = message.replace(/[🎯📚✏️🗑️💌💬⚠️]/g, '').trim();
+
+  toast.appendChild(iconSpan);
+  toast.appendChild(messageSpan);
 
   DOM.toastContainer.appendChild(toast);
-  
-  // Trigger entry transition
+
+  // Animate
   setTimeout(() => {
     toast.classList.add('show');
   }, 50);
 
-  // Auto remove after 4 seconds
+  // Remove
   setTimeout(() => {
     toast.classList.remove('show');
-    // Wait for transition to end before deleting element
+
     setTimeout(() => {
       toast.remove();
     }, 400);
