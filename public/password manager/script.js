@@ -615,7 +615,7 @@ function updateStats() {
   if (total) {
     total.textContent = entries.length;
   }
-
+}
   let weakCount = 0;
 
 passwordInput.addEventListener("input", () => {
