@@ -804,6 +804,7 @@ let searchQuery = "";
 let sortOption = "default";
 let techStackFilter = "all";
 let difficultyFilter = "all";
+let currentFilteredProjects = [];
 
 function syncStateToURL() {
   const url = new URL(window.location);
@@ -890,6 +891,8 @@ function renderGrid() {
               .includes(term),
         );
 
+       
+
     // Tech stack dropdown filter
     let matchesTech = true;
     if (techStackFilter && techStackFilter !== "all") {
@@ -908,6 +911,7 @@ function renderGrid() {
 
     return matchesFilter && matchesSearch && matchesTech && matchesDifficulty;
   });
+  currentFilteredProjects = [...filtered];
 
   // Apply sorting
   if (sortOption === "az") {
@@ -992,7 +996,68 @@ function renderGrid() {
   syncStateToURL();
   syncProjectCounts();
 }
+function renderRandomProject() {
+  const result =
+    document.getElementById(
+      "randomProjectResult"
+    );
 
+  if (!result) return;
+
+  const source =
+    currentFilteredProjects.length
+      ? currentFilteredProjects
+      : PROJECTS;
+
+  const randomProject =
+    source[
+      Math.floor(
+        Math.random() * source.length
+      )
+    ];
+
+  if (!randomProject) return;
+
+  const category =
+    getCategoryFromTags(
+      randomProject.techStack,
+      randomProject.projectName
+    );
+
+  const bookmarkedDays = new Set(
+    bookmarkedProjects.map(
+      (item) =>
+        normalizeProjectEntry(item).day
+    )
+  );
+
+  const { html, sourceOnly } =
+    buildProjectCardHTML({
+      day: randomProject.day,
+      name: randomProject.projectName,
+      url: randomProject.projectPath,
+      tags: randomProject.techStack,
+      category,
+      isBookmarked:
+        bookmarkedDays.has(
+          randomProject.day
+        ),
+      showDescription: true
+    });
+
+  result.innerHTML = "";
+
+  const card =
+    document.createElement("div");
+
+  card.className = sourceOnly
+    ? "project-card source-only visible"
+    : "project-card visible";
+
+  card.innerHTML = html;
+
+  result.appendChild(card);
+}
 function renderPagination(totalItems, totalPages) {
   const grid = document.getElementById("projectGrid");
   if (!grid) return;
@@ -2461,3 +2526,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   window.addEventListener("popstate", () => restoreStateFromURL());
 });
+document
+  .getElementById(
+    "randomProjectBtn"
+  )
+  ?.addEventListener(
+    "click",
+    renderRandomProject
+  );
