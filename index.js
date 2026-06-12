@@ -1821,7 +1821,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   initTechStackSearch();
   initClearAllFilters();
 
-  initStreak();
   updateGamifiedUI();
 
   try {
