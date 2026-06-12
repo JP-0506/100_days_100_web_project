@@ -80,7 +80,7 @@
   overflow: hidden;
 }
 [data-theme="dark"] .page-title {
-  color: white;
+  color: white !important;
 }
 
 .card-img {
