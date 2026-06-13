@@ -2880,6 +2880,22 @@
   },
   {
     "projectNo": 228,
+    {
+    "projectNo": 228,
+    "projectName": "Beat Maker",
+    "projectType": "Music",
+    "projectDesc": "Generate beats ",
+    "techStack": [
+      "html",
+      "css",
+      "javascript",
+      "music"
+    ],
+    "difficulty": "advanced",
+    "projectPath": "./public/BeatMaker/demo.html"
+  },
+  {
+    "projectNo": 229,
     "projectName": "MyCalendar",
     "projectType": "Tool",
     "projectDesc": "An interactive festival and event calendar with notes, themes, and persistent storage using localStorage.",
@@ -2889,5 +2905,5 @@
     ],
     "difficulty": "beginner",
     "projectPath": "./public/MyCalendar/index.html"
-  } 
+  }
 ]
