@@ -2840,7 +2840,7 @@
   },
   {
     "projectNo": 225,
-    "projectName": "Harryy Potter Spellbook",
+    "projectName": "Harry Potter Spellbook",
     "projectType": "API",
     "projectDesc": "A magical, interactive web application built with vanilla web technologies. This project fetches live data from the Harry Potter API and features an interactive Spell Caster that dynamically alters the UI using CSS animations and state changes based on the spells you cast.",
     "techStack": [
