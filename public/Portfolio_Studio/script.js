@@ -41,21 +41,60 @@ function initializeApp() {
  */
 function renderProjectForms() {
     projectsFormContainer.innerHTML = '';
+    
     projectDataList.forEach((proj, idx) => {
         const box = document.createElement('div');
         box.classList.add('dynamic-project-box');
-        box.innerHTML = `
-            <div class="input-group">
-                <input type="text" value="${proj.title}" placeholder="Project Name" data-idx="${idx}" data-field="title" class="proj-input">
-            </div>
-            <div class="input-group">
-                <input type="text" value="${proj.tech}" placeholder="Languages / Engines Used" data-idx="${idx}" data-field="tech" class="proj-input">
-            </div>
-            <div class="input-group">
-                <input type="text" value="${proj.desc}" placeholder="Project Summary" data-idx="${idx}" data-field="desc" class="proj-input">
-            </div>
-            <button class="btn-delete" data-idx="${idx}">Remove Element 🗑</button>
-        `;
+
+        // 1. Create Title Input Group
+        const titleGroup = document.createElement('div');
+        titleGroup.classList.add('input-group');
+        const titleInput = document.createElement('input');
+        titleInput.type = 'text';
+        titleInput.value = proj.title; // ✅ Secure: Treated strictly as a text value
+        titleInput.placeholder = 'Project Name';
+        titleInput.setAttribute('data-idx', idx);
+        titleInput.setAttribute('data-field', 'title');
+        titleInput.classList.add('proj-input');
+        titleGroup.appendChild(titleInput);
+
+        // 2. Create Tech Input Group
+        const techGroup = document.createElement('div');
+        techGroup.classList.add('input-group');
+        const techInput = document.createElement('input');
+        techInput.type = 'text';
+        techInput.value = proj.tech;  // ✅ Secure
+        techInput.placeholder = 'Languages / Engines Used';
+        techInput.setAttribute('data-idx', idx);
+        techInput.setAttribute('data-field', 'tech');
+        techInput.classList.add('proj-input');
+        techGroup.appendChild(techInput);
+
+        // 3. Create Description Input Group
+        const descGroup = document.createElement('div');
+        descGroup.classList.add('input-group');
+        const descInput = document.createElement('input');
+        descInput.type = 'text';
+        descInput.value = proj.desc;  // ✅ Secure
+        descInput.placeholder = 'Project Summary';
+        descInput.setAttribute('data-idx', idx);
+        descInput.setAttribute('data-field', 'desc');
+        descInput.classList.add('proj-input');
+        descGroup.appendChild(descInput);
+
+        // 4. Create Delete Button
+        const deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('btn-delete');
+        deleteBtn.setAttribute('data-idx', idx);
+        deleteBtn.textContent = 'Remove Element 🗑'; // ✅ Secure text property
+
+        // Assemble the box structure
+        box.appendChild(titleGroup);
+        box.appendChild(techGroup);
+        box.appendChild(descGroup);
+        box.appendChild(deleteBtn);
+
+        // Append to container
         projectsFormContainer.appendChild(box);
     });
 
