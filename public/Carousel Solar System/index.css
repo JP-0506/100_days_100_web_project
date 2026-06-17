@@ -186,10 +186,13 @@ body{
   background:rgba(255,255,255,0.4);
 }
 
-.hamburger-container:hover .planet-mini-list{
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
+/* Desktop only */
+@media (hover:hover){
+  .hamburger-container:hover .planet-mini-list{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+  }
 }
 
 .mini-planet{
@@ -713,4 +716,10 @@ span{
 
 .planet-item{
   cursor:pointer;
+}
+
+.planet-mini-list.active{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
 }
