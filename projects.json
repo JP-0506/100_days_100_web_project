@@ -2920,5 +2920,20 @@
     ],
     "difficulty": "intermediate",
     "projectPath": "./public/UnitVerse/index.html"
+  },
+  {
+    "projectNo": 231,
+    "projectName": "FLAVOURLY",
+    "projectType": "API",
+    "projectDesc": "A modern recipe discovery web application built with React and Vite. Search for recipes by meal name or ingredient, explore recipe details, save favorites, and filter vegetarian meals.",
+    "techStack": [
+      "api",
+      "react",
+      "javascript",
+      "html",
+      "css"
+    ],
+    "difficulty": "intermediate",
+    "projectPath": "./public/FLAVOURLY/index.html"
   }
 ]
