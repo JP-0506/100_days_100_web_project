@@ -198,7 +198,17 @@ function sleep(ms) {
 function appendLog(tag, text, cls) {
   const line = document.createElement('div');
   line.className = 'log-line' + (cls ? ' ' + cls : '');
-  line.innerHTML = `<span class="tag">[${tag}]</span> ${text}`;
+
+  // Build nodes directly instead of innerHTML + string interpolation, so any
+  // user-controlled value in `text` (e.g. raw URL input) is always treated as
+  // plain text and never parsed as markup.
+  const tagSpan = document.createElement('span');
+  tagSpan.className = 'tag';
+  tagSpan.textContent = `[${tag}]`;
+
+  line.appendChild(tagSpan);
+  line.appendChild(document.createTextNode(' ' + text));
+
   logPane.appendChild(line);
   return line;
 }
