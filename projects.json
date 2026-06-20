@@ -3005,17 +3005,44 @@
     ],
     "difficulty": "intermediate",
     "projectPath": "./public/FLAVOURLY/index.html"
-  },,
-  {
-    "projectNo": 237,
-    "projectName": "LayerText",
-    "projectType": "Tool",
-    "projectDesc": "Frontend Devs get easy tools to copy paste in their project",
-    "techStack": [
-      "javascript",
-      "html",
-      "css"
-    ],
-    "difficulty": "intermediate",
-    "projectPath": "./public/css-animation/index.html"
+  },
+    {
+      "projectNo": 237,
+      "projectName": "Whos's That Pokemon Game",
+      "projectType": "Game",
+      "projectDesc": "An interactive classic who's that pokemon game. It comes with classic fonts and a score tracker",
+      "techStack": [
+        "html",
+        "css",
+        "javascript"
+      ],
+      "difficulty": "advanced",
+      "projectPath": "./public/WhosThatPokemon/index.html"
+    },
+    {
+      "projectNo": 238,
+      "projectName": "Red-Black Tree Visualizer",
+      "projectType": "Tool",
+      "projectDesc": "Interactive DSA tool to visualize the insertion, balancing, rotations, and recoloring of a Red-Black Tree in real-time.",
+      "techStack": [
+        "html",
+        "css",
+        "javascript"
+      ],
+      "difficulty": "advanced",
+      "projectPath": "./public/RedBlackTreeVisualizer/index.html"
+    },,
+    {
+      "projectNo": 239,
+      "projectName": "LayerText",
+      "projectType": "Tool",
+      "projectDesc": "Tool for Frontend Developers",
+      "techStack": [
+        "html",
+        "css",
+        "javascript"
+      ],
+      "difficulty": "advanced",
+      "projectPath": "./public/css-animation/index.html"
+    }
 ]
