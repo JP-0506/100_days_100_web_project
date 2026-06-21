@@ -3058,5 +3058,19 @@
       ],
       "difficulty": "intermediate",
       "projectPath": "./public/ColorJumpGame/index.html"
+    },
+    {
+      "projectNo": 241,
+      "projectName": "PhishGuard AI Terminal",
+      "projectType": "Tool",
+      "projectDesc": "A cyber-themed URL analysis tool that detects potentially suspicious or phishing-like links using rule-based heuristic scoring. Features a hacker-style terminal UI with an animated Matrix background, a live scanning log, and AI-style threat explanations with a confidence score.",
+      "techStack": [
+        "html",
+        "css",
+        "javascript",
+        "canvas"
+      ],
+      "difficulty": "intermediate",
+      "projectPath": "./public/PhishGuard-AI-Terminal/index.html"
     }
 ]
